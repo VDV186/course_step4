@@ -15,10 +15,10 @@ class ProductPage(BasePage):
         add_to_basket_button.click()
 
     def should_be_alert_success(self):
-        assert self.is_element_present(*ProductPageLocators.ALERT_SUCCESS), "Alert-success form is not presented"
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not presented"
 
     def should_be_alert_info(self):
-        assert self.is_element_present(*ProductPageLocators.ALERT_INFO), "Alert-info form is not presented"
+        assert self.is_element_present(*ProductPageLocators.ALERT_INFO), "Alert-info is not presented"
 
     def alert_info_price_equal_product_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
@@ -29,7 +29,15 @@ class ProductPage(BasePage):
 
     def alert_success_name_equal_product_name(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
-        alert_success_name = self.browser.find_element(*ProductPageLocators.ALERT_SUCCESS_NAME)
-        alert = alert_success_name.text
+        success_message_name = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_NAME)
+        alert = success_message_name.text
         product = product_name.text
-        assert alert == product, "Alert success name is non equal product name"
+        assert alert == product, "Success message name is non equal product name"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_should_be_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success should be disappeared, but not"
