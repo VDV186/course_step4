@@ -1,4 +1,5 @@
 # Home work - autotesting with selenium and python
+# Инструкция как рецензировать в пайчарме, может кому поможет - https://yadi.sk/i/sQ6vAbrAVkxABA
 # Версия питона  3.10
 # Все пакеты в requirements.txt (некоторое пакеты загрузились с pytest  и необходимы для его работы)
 # pip install -r requirements.txt - команда для установки пакетов
